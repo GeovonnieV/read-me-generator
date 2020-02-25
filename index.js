@@ -1,6 +1,7 @@
 const inqurirer = require("inquirer") ;
 const fs = require("fs") ;
-
+const axios = require("axios");
+//prompts to gather info
 inqurirer.prompt([
     {
         type: "input",
@@ -53,6 +54,30 @@ inqurirer.prompt([
     const using = response.using
     const test = response.test
     const contribute = response.contribute
+    const queryUrl = "https://api.github.com/users/" + username
+    
+    //gets the GitHub account 
+    axios
+    .get(queryUrl)
+    .then(function(res){
+        console.log(res)
+    //grabbing what we need from the GH account 
+    const location = res.data.location
+    console.log("my location " + location)
+    const email = res.data.email
+    console.log("email " + email )
+    const avatar = res.data.avatar_url
+    console.log("avatar url " + avatar)
+    const page = "#" + title 
+
+    fs.writeFile("./readme2.md", page, function(err){
+        if(err){
+            throw err
+        }console.log("done son")
+    })
+    })
 
    
 })
+
+// last steps 1.make badge 2.write to the html
