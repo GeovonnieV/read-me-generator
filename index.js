@@ -1,3 +1,4 @@
+//vars for packages
 const inqurirer = require("inquirer") ;
 const fs = require("fs") ;
 const axios = require("axios");
@@ -43,6 +44,11 @@ inqurirer.prompt([
         type: "input",
         message: "what does the user need to know about contributing to the repo",
         name:"contribute",
+    },
+    {
+        type: "input",
+        message: "questions?",
+        name:"questions",
     }
 ]).then(function(response){
     // vars for the prompt responses 
@@ -55,6 +61,7 @@ inqurirer.prompt([
     const test = response.test
     const contribute = response.contribute
     const queryUrl = "https://api.github.com/users/" + username
+    const questions = response.questions
     
     //gets the GitHub account 
     axios
@@ -68,7 +75,13 @@ inqurirer.prompt([
     console.log("email " + email )
     const avatar = res.data.avatar_url
     console.log("avatar url " + avatar)
-    const page = "#" + title 
+    //page makes all the data and strings needed for writeFile to make a markdown read me
+    const page = "#" + title  + "\n## Description\n" + description + "\n## Table of contents\n" +
+    "* Installation: " + install + "\n* Usage: " + using + "\n* License: " + license + "\n* Contributing: " + contribute
+    + "\n* Test: " + test + "\n* Questions: " + questions + "\n## Installation \n" + "To install necessary dependances, run the following command: \n" + "```\t" + install +  "```"
+    
+    
+
 
     fs.writeFile("./readme2.md", page, function(err){
         if(err){
@@ -80,4 +93,4 @@ inqurirer.prompt([
    
 })
 
-// last steps 1.make badge 2.write to the html
+// last steps 1.client secret 2.get badge
