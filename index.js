@@ -2,6 +2,8 @@
 const inqurirer = require("inquirer") ;
 const fs = require("fs") ;
 const axios = require("axios");
+//find the env file and get the enviorment vars
+require("dotenv").config();
 //prompts to gather info
 inqurirer.prompt([
     {
@@ -48,7 +50,7 @@ inqurirer.prompt([
     {
         type: "input",
         message: "questions?",
-        name:"questions",
+        name:"press enter for README",
     }
 ]).then(function(response){
     // vars for the prompt responses 
@@ -60,7 +62,9 @@ inqurirer.prompt([
     const using = response.using
     const test = response.test
     const contribute = response.contribute
-    const queryUrl = "https://api.github.com/users/" + username
+    const queryUrl =  `https://api.github.com/users/${username}?client_id=${
+        process.env.CLIENT_ID
+        }&client_secret=${process.env.CLIENT_SECRET}`
     const questions = response.questions
     
     //gets the GitHub account 
@@ -79,8 +83,10 @@ inqurirer.prompt([
     const page = "#" + title  + "\n## Description\n" + description + "\n## Table of contents\n" +
     "* Installation: " + install + "\n* Usage: " + using + "\n* License: " + license + "\n* Contributing: " + contribute
     + "\n* Test: " + test + "\n* Questions: " + questions + "\n## Installation \n" + "To install necessary dependances, run the following command: \n" + "```\t" + install +  "```"
-    
-    
+    + "\n## Usage \n" + using + "\n## Licencse \n" + `The project is licesned under the ${license} license` 
+    + "\n## Contributing \n" + contribute 
+    + "\n## Tests \n" +  "To run test run the following command: \n" + "```\t" + test +  "```"
+    +"\n## Questions \n"
 
 
     fs.writeFile("./readme2.md", page, function(err){

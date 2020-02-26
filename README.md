@@ -37,3 +37,6 @@ License
 Contributing
 Tests
 Questions
+
+
+"https://api.github.com/users/" + username
