@@ -86,7 +86,8 @@ inqurirer.prompt([
     + "\n## Usage \n" + using + "\n## Licencse \n" + `The project is licesned under the ${license} license` 
     + "\n## Contributing \n" + contribute 
     + "\n## Tests \n" +  "To run test run the following command: \n" + "```\t" + test +  "```"
-    +"\n## Questions \n"
+    +"\n## Questions \n" + "* Email: " + email + "\n Meet with me: " + location 
+    + "\n" + "![me](" + avatar  + ")"
 
 
     fs.writeFile("./readme2.md", page, function(err){

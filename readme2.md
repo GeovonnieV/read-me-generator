@@ -1,23 +1,26 @@
-#title
+#
 ## Description
-short
+
 ## Table of contents
-* Installation: hello
-* Usage: uesl
-* License: this 
-* Contributing: sf
-* Test: whats up
+* Installation: 
+* Usage: 
+* License: 
+* Contributing: 
+* Test: 
 * Questions: undefined
 ## Installation 
 To install necessary dependances, run the following command: 
-```	hello```
+```	```
 ## Usage 
-uesl
+
 ## Licencse 
-The project is licesned under the this  license
+The project is licesned under the  license
 ## Contributing 
-sf
+
 ## Tests 
 To run test run the following command: 
-```	whats up```
+```	```
 ## Questions 
+* Email: geovonnievasquez@gmail.com
+ Meet with me: Arlington Texas
+![me](https://avatars1.githubusercontent.com/u/56539631?v=4)
