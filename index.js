@@ -87,7 +87,7 @@ inqurirer.prompt([
     + "\n## Contributing \n" + contribute 
     + "\n## Tests \n" +  "To run test run the following command: \n" + "```\t" + test +  "```"
     +"\n## Questions \n" + "* Email: " + email + "\n Meet with me: " + location 
-    + "\n" + "![me](" + avatar  + ")"
+    + "\n" + "![me](" + avatar  + ")" + "\n[![Generic badge](https://img.shields.io/badge/"+ "license" +"-"+ license + "-<COLOR>.svg)](https://shields.io/)"
 
 
     fs.writeFile("./readme2.md", page, function(err){
